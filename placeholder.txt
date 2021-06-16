@@ -1,0 +1,22 @@
+if(command === 'greet') {
+		console.log('Heya~');
+	}
+	else if (command === 'test') {
+		if(!args.length) {
+			return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+		}
+		message.channel.send(`Your Command: ${command}\n Your Arguments: ${args}`);
+	}
+	else if (command === 'avatar') {
+		if(!message.mentions.users.size) {
+			return message.channel.send(`${message.author.displayAvatarURL({ format:'png' })}`);
+		}
+		const avatarList = message.mentions.users.map(user=> {
+			return `${user.displayAvatarURL({ format:'png' })}`;
+		});
+		message.channel.send(avatarList);
+	}
+	else if(command === 'swapava') {
+		const destination = './images/a.jpeg';
+		client.user.setAvatar(`${destination}`);
+	}
